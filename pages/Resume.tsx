@@ -1,12 +1,12 @@
-import React from 'react';
-import CardboardBox from '../components/CardboardBox';
-import { ACHIEVEMENTS, SEMINARS, PROFILE } from '../constants';
+import React from "react";
+import CardboardBox from "../components/CardboardBox";
+import { ACHIEVEMENTS, SEMINARS, PROFILE } from "../constants";
 
 const Resume: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-10">
       <div className="text-center">
-         <h2 className="text-4xl font-bold text-[#3e2723] mb-4 bg-[#e6ccb2] inline-block px-4 border-b-4 border-[#3e2723]">
+        <h2 className="text-4xl font-bold text-[#3e2723] mb-4 bg-[#e6ccb2] inline-block px-4 border-b-4 border-[#3e2723]">
           /resume
         </h2>
       </div>
@@ -40,7 +40,7 @@ const Resume: React.FC = () => {
         </ul>
       </CardboardBox>
 
-       <CardboardBox title="Technical Skills" variant="accent">
+      <CardboardBox title="Technical Skills" variant="accent">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <h4 className="font-bold underline mb-2">Languages</h4>
@@ -54,7 +54,7 @@ const Resume: React.FC = () => {
             <h4 className="font-bold underline mb-2">AI & Data</h4>
             <p>OpenCV, LLMs (Local), Machine Learning Concepts</p>
           </div>
-           <div>
+          <div>
             <h4 className="font-bold underline mb-2">Hardware</h4>
             <p>PC Troubleshooting, Maintenance, IoT</p>
           </div>

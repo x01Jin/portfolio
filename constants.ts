@@ -12,15 +12,22 @@ export const PROJECTS: Project[] = [
     name: "Laboratory Inventory Manager",
     description:
       "A software made with pyqt6 for managing laboratory inventory items and requisitions.",
-    tech: ["Python", "PyQt6"],
+    tech: ["Python", "PyQt6", "SQLite"],
     link: "https://github.com/x01Jin/inventory-manager",
   },
   {
     name: "ProctorAI",
     description:
       "An AI Computer Vision-powered proctoring system assistant for proctors in monitoring and detecting potential academic misconduct.",
-    tech: ["Python", "OpenCV", "AI"],
+    tech: ["Python", "PyQt6", "Computer Vision", "Roboflow"],
     link: "https://github.com/x01Jin/ProctorAI",
+  },
+  {
+    name: "Ascend OS",
+    description:
+      "Ascend OS is an experimental incremental exploration game that lets you tinker with a desktop environment as you mine Data, trace signals, and find the way to ascend on a procedurally generated file explorer.",
+    tech: ["TypeScript", "React", "Tailwind CSS"],
+    link: "https://github.com/x01Jin/ascend-os",
   },
   {
     name: "maimaimai",
@@ -29,24 +36,17 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/x01Jin/maimaimai",
   },
   {
-    name: "project-apollo",
-    description:
-      "A simple browser based game about maintaining a dying ship until you are rescued.",
-    tech: ["JavaScript", "HTML", "CSS"],
-    link: "https://github.com/x01Jin/project-apollo",
-  },
-  {
-    name: "dndroll-discord-bot",
+    name: "dndroll discord bot",
     description: "A simple Discord bot providing dice rolls and D&D utilities.",
     tech: ["Python", "Discord.py"],
     link: "https://github.com/x01Jin/dndroll-discord-bot",
   },
   {
-    name: "ascend-endless",
+    name: "Project Apollo",
     description:
-      "A minimalist web-based concept that turns file system navigation into an exploration of memory.",
+      "A simple browser based game about maintaining a dying ship until you are rescued.",
     tech: ["JavaScript", "HTML", "CSS"],
-    link: "https://github.com/x01Jin/ascend-endless",
+    link: "https://github.com/x01Jin/project-apollo",
   },
 ];
 
