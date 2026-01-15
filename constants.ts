@@ -23,17 +23,18 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/x01Jin/ProctorAI",
   },
   {
+    name: "maimaimai",
+    description:
+      "A Peer-to-Peer (P2P) queue management tool designed specifically for Maimai arcade sessions.",
+    tech: ["TypeScript", "React", "PeerJS", "Tailwind CSS"],
+    link: "https://github.com/x01Jin/maimaimai",
+  },
+  {
     name: "Ascend OS",
     description:
       "Ascend OS is an experimental incremental exploration game that lets you tinker with a desktop environment as you mine Data, trace signals, and find the way to ascend on a procedurally generated file explorer.",
     tech: ["TypeScript", "React", "Tailwind CSS"],
     link: "https://github.com/x01Jin/ascend-os",
-  },
-  {
-    name: "maimaimai",
-    description: "A simple queue manager for maimai arcade players.",
-    tech: ["JavaScript", "Bootstrap", "HTML", "CSS"],
-    link: "https://github.com/x01Jin/maimaimai",
   },
   {
     name: "dndroll discord bot",
