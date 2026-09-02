@@ -25,9 +25,6 @@ function App() {
         <p className="font-semibold">
           © {new Date().getFullYear()} x01Jin. Hosted on GitHub Pages.
         </p>
-        <p className="opacity-60 text-sm mt-2">
-          Pixel Cardboard v2.0 • Single-Page Portfolio
-        </p>
       </footer>
     </div>
   );
