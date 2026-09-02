@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import CardboardBox from "./CardboardBox";
 import ScrollSection from "./ScrollSection";
-import { SKILLS, SOCIAL_LINKS } from "../constants";
+import { SOCIAL_LINKS } from "../constants";
 
 type ContactIconName = "email" | "github" | "messenger" | "discord";
 
@@ -43,41 +43,6 @@ const SkillsContactSection: React.FC = () => {
   return (
     <ScrollSection id="skills-contact">
       <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Skills Section */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-[#3e2723] mb-12 text-center"
-        >
-          Technical Skills
-        </motion.h2>
-
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
-          {SKILLS.map((skillGroup, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-            >
-              <CardboardBox title={skillGroup.category} variant="primary">
-                <div className="flex flex-wrap gap-3">
-                  {skillGroup.items.map((item) => (
-                    <motion.span
-                      key={item}
-                      whileHover={{ scale: 1.05 }}
-                      className="px-4 py-2 bg-[#e6ccb2] border-2 border-[#3e2723] text-[#3e2723] font-semibold cursor-default"
-                    >
-                      {item}
-                    </motion.span>
-                  ))}
-                </div>
-              </CardboardBox>
-            </motion.div>
-          ))}
-        </div>
-
         {/* Contact Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
