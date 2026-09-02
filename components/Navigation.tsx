@@ -12,7 +12,6 @@ const Navigation: React.FC = () => {
 
   const links: NavLink[] = [
     { name: "Home", id: "home" },
-    { name: "About", id: "about" },
     { name: "Experience", id: "experience" },
     { name: "Projects", id: "projects" },
     { name: "Contact", id: "skills-contact" },
@@ -31,18 +30,24 @@ const Navigation: React.FC = () => {
         };
       });
 
-      const visibleSection = sections
-        .filter((s) => s && s.offset < window.innerHeight / 2)
-        .pop();
+      // Find the section closest to the top of the viewport
+      const closestSection = sections
+        .filter((s) => s !== null)
+        .reduce((closest, current) => {
+          if (!closest) return current;
+          return Math.abs(current!.offset) < Math.abs(closest.offset)
+            ? current
+            : closest;
+        });
 
-      if (visibleSection) {
-        setActiveSection(visibleSection.id);
+      if (closestSection) {
+        setActiveSection(closestSection.id);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [links]);
 
   const smoothScroll = (id: string) => {
     const element = document.getElementById(id);

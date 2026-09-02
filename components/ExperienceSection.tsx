@@ -12,7 +12,6 @@ const ExperienceSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-4xl font-bold text-[#3e2723] mb-12 text-center"
         >
           Experience & Achievements
@@ -32,7 +31,6 @@ const ExperienceSection: React.FC = () => {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
               >
                 <CardboardBox className="border-l-4 border-[#8b5a2b]">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-3">
@@ -65,7 +63,6 @@ const ExperienceSection: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
           >
             <CardboardBox title="Achievements" variant="primary">
               <div className="space-y-6">

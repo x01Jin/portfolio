@@ -13,7 +13,6 @@ const SkillsContactSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-4xl font-bold text-[#3e2723] mb-12 text-center"
         >
           Technical Skills
@@ -26,7 +25,6 @@ const SkillsContactSection: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              viewport={{ once: true }}
             >
               <CardboardBox title={skillGroup.category} variant="primary">
                 <div className="flex flex-wrap gap-3">
@@ -50,22 +48,21 @@ const SkillsContactSection: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
           <h2 className="text-4xl font-bold text-[#3e2723] mb-12 text-center">
             Get in Touch
           </h2>
 
           <CardboardBox
-            className="flex flex-col gap-6 items-center text-center py-10"
+            className="mx-auto flex max-w-5xl flex-col gap-6 items-center text-center py-10"
             variant="accent"
           >
-            <p className="text-xl text-[#3e2723] mb-4 max-w-2xl">
+            <p className="mx-auto mb-4 w-full max-w-2xl break-words px-2 text-center text-base leading-relaxed text-[#3e2723] sm:px-4 sm:text-xl">
               Feel free to reach out for collaborations, troubleshooting, or
               just to chat about AI and Code.
             </p>
 
-            <div className="w-full space-y-4 max-w-lg">
+            <div className="w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Email */}
               <motion.a
                 href={`mailto:${SOCIAL_LINKS.email}`}

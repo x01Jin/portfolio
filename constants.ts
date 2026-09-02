@@ -92,12 +92,12 @@ export interface Experience {
 
 export const EXPERIENCE: Experience[] = [
   {
-    title: "IT Internship",
-    company: "Universidad de Dagupan",
-    period: "July 10 - August 17, 2024",
+    title: "Technical Assistant II",
+    company: "DepED Regional Office - Region I",
+    period: "March 8, 2026 - Current",
     details: [
-      "Fixed common technical issues (Internet, Computer hardware and software)",
-      "Wrote scripts for workflow automation",
+      "Assisting in setting up computer networks and servers",
+      "Managing IT infrastructure and technical operations",
     ],
   },
   {
@@ -110,12 +110,12 @@ export const EXPERIENCE: Experience[] = [
     ],
   },
   {
-    title: "Technical Assistant II",
-    company: "DepED Regional Office - Region I",
-    period: "March 8, 2026 - Current",
+    title: "IT Internship",
+    company: "Universidad de Dagupan",
+    period: "July 10 - August 17, 2024",
     details: [
-      "Assisting in setting up computer networks and servers",
-      "Managing IT infrastructure and technical operations",
+      "Fixed common technical issues (Internet, Computer hardware and software)",
+      "Wrote scripts for workflow automation",
     ],
   },
 ];

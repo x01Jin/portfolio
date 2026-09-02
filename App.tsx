@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navigation from "./components/Navigation";
 import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
 import ExperienceSection from "./components/ExperienceSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillsContactSection from "./components/SkillsContactSection";
@@ -17,7 +16,6 @@ function App() {
       <Navigation />
       <main className="w-full">
         <HeroSection />
-        <AboutSection />
         <ExperienceSection />
         <ProjectsSection />
         <SkillsContactSection />

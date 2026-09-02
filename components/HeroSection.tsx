@@ -4,7 +4,10 @@ import { PROFILE, SOCIAL_LINKS } from "../constants";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-12 px-4">
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col items-center justify-center py-12 px-4"
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -55,7 +58,7 @@ const HeroSection: React.FC = () => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="mt-14 flex h-6 w-6 items-center justify-center md:mt-20"
       >
         <svg
           className="w-6 h-6 text-[#5d4037]"

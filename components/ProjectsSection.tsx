@@ -12,7 +12,6 @@ const ProjectsSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-4xl font-bold text-[#3e2723] mb-12 text-center"
         >
           Projects & Portfolio
@@ -25,7 +24,6 @@ const ProjectsSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              viewport={{ once: true }}
               whileHover={{ y: -5 }}
             >
               <CardboardBox
@@ -44,7 +42,6 @@ const ProjectsSection: React.FC = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.05 }}
-                        viewport={{ once: true }}
                         className="text-sm bg-[#fff8dc] px-2 py-1 border border-[#3e2723] text-[#3e2723] font-semibold"
                       >
                         {tech}
