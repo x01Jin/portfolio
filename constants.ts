@@ -92,12 +92,12 @@ export interface Experience {
 
 export const EXPERIENCE: Experience[] = [
   {
-    title: "Technical Assistant II",
-    company: "DepED Regional Office - Region I",
-    period: "March 8, 2026 - Current",
+    title: "Probationary IT Employee",
+    company: "Natasha Ventures - Urdaneta",
+    period: "December 2025 - June 2026",
     details: [
-      "Assisting in setting up computer networks and servers",
-      "Managing IT infrastructure and technical operations",
+      "Developing Various Software Solutions(NDA) for improving workflow operations",
+      "Investigating and Troubleshooting Tech related problems via a Ticketing system",
     ],
   },
   {
