@@ -94,7 +94,7 @@ export const EXPERIENCE: Experience[] = [
   {
     title: "Probationary IT Employee",
     company: "Natasha Ventures - Urdaneta",
-    period: "December 2025 - June 2026",
+    period: "December 2025 - July 2026",
     details: [
       "Developing Various Software Solutions(NDA) for improving workflow operations",
       "Investigating and Troubleshooting Tech related problems via a Ticketing system",
