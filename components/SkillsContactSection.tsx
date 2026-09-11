@@ -101,13 +101,17 @@ const SkillsContactSection: React.FC = () => {
               </motion.a>
 
               {/* Discord */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="flex items-center justify-center gap-2 w-full bg-[#7289da] text-white border-2 border-[#4a5d91] p-4 shadow-[4px_4px_0_0_#4a5d91] text-lg font-bold"
+              <motion.a
+                href={SOCIAL_LINKS.discord}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-2 w-full bg-[#7289da] text-white border-2 border-[#4a5d91] p-4 shadow-[4px_4px_0_0_#4a5d91] hover:bg-[#5a73b5] hover:translate-y-1 hover:shadow-[2px_2px_0_0_#4a5d91] transition-all text-lg font-bold"
               >
                 <ContactIcon name="discord" />
-                {SOCIAL_LINKS.discord}
-              </motion.div>
+                Discord Profile
+              </motion.a>
             </div>
           </CardboardBox>
         </motion.div>

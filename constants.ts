@@ -4,7 +4,7 @@ export const SOCIAL_LINKS = {
   github: "https://github.com/x01Jin",
   email: "ajph1082@gmail.com",
   facebook: "https://www.facebook.com/Sorry.im.Incognito/",
-  discord: "x02jin",
+  discord: "https://discord.com/users/489127925116043265",
 };
 
 export const PROJECTS: Project[] = [
@@ -96,7 +96,7 @@ export const EXPERIENCE: Experience[] = [
     company: "Natasha Ventures - Urdaneta",
     period: "December 2025 - July 2026",
     details: [
-      "Developing Various Software Solutions(NDA) for improving workflow operations",
+      "Developing Various Software Solutions for improving workflow operations",
       "Investigating and Troubleshooting Tech related problems via a Ticketing system",
     ],
   },
