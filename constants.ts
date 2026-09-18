@@ -9,32 +9,18 @@ export const SOCIAL_LINKS = {
 
 export const PROJECTS: Project[] = [
   {
-    name: "Laboratory Inventory Manager",
+    name: "Youtube to music Converter (YTMC)",
     description:
-      "A portable software for managing laboratory inventory items and requisitions. 2-person team project featuring inventory tracking and requisition management.",
-    tech: ["Python", "PyQt6", "SQLite"],
-    link: "https://github.com/x01Jin/inventory-manager",
+      "A Windows desktop app to convert YouTube videos to music files with other tools like trimming autotagging the music's metadata, changing extension, and advance enhancements.",
+    tech: ["React", "Typescript", "Electron"],
+    link: "https://github.com/x01Jin/ytmc",
   },
   {
-    name: "ProctorAI",
+    name: "Discord Games Launcher",
     description:
-      "An AI Computer Vision-powered proctoring system assistant using YOLO-based Roboflow models for monitoring and detecting potential academic misconduct.",
-    tech: ["Python", "PyQt6", "Computer Vision", "YOLO", "Roboflow"],
-    link: "https://github.com/x01Jin/ProctorAI",
-  },
-  {
-    name: "MaiMaiMai",
-    description:
-      "A Peer-to-Peer (P2P) queue management tool designed for arcade sessions and general queueing using CRDT-based P2P technology.",
-    tech: ["TypeScript", "React", "Yjs", "WebRTC"],
-    link: "https://github.com/x01Jin/maimaimai",
-  },
-  {
-    name: "Ascend OS",
-    description:
-      "An experimental incremental exploration game with procedurally generated file explorer. Mine data, trace signals, and uncover the path to ascension.",
-    tech: ["TypeScript", "React", "Tailwind CSS"],
-    link: "https://github.com/x01Jin/ascend-os",
+      "A Windows application that creates dummy executables with GUI windows to trigger Discord's game detection. Browse Discord's supported games database, add them to your library, and launch dummy processes, making Discord show your Playing status.",
+    tech: ["Python", "React", "Typescript"],
+    link: "https://github.com/x01Jin/discord-games-launcher",
   },
   {
     name: "dndroll Discord Bot",
@@ -44,11 +30,25 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/x01Jin/dndroll-discord-bot",
   },
   {
-    name: "Project Apollo",
+    name: "Experimental Test Site",
     description:
-      "A browser-based game about maintaining a dying ship until rescue. Test your resource management and decision-making skills.",
-    tech: ["JavaScript", "HTML", "CSS"],
-    link: "https://github.com/x01Jin/project-apollo",
+      "A personal website showcasing bizzare effects and utilizing public domain materials, this is where i test multiple kinds of effects and animations for my personal projects and experiments.",
+    tech: ["TypeScript", "React", "Tailwind CSS"],
+    link: "https://github.com/x01Jin/experimental-test-site",
+  },
+  {
+    name: "Ascend OS",
+    description:
+      "An experimental incremental exploration game with procedurally generated file explorer. Mine data, trace signals, and uncover the path to ascension.",
+    tech: ["TypeScript", "React", "Tailwind CSS"],
+    link: "https://github.com/x01Jin/ascend-os",
+  },
+  {
+    name: "MaiMaiMai",
+    description:
+      "A Peer-to-Peer (P2P) queue management tool designed for arcade sessions and general queueing using CRDT-based P2P technology.",
+    tech: ["TypeScript", "React", "Yjs", "WebRTC"],
+    link: "https://github.com/x01Jin/maimaimai",
   },
 ];
 
@@ -92,7 +92,7 @@ export interface Experience {
 
 export const EXPERIENCE: Experience[] = [
   {
-    title: "Probationary IT Employee",
+    title: "IT Employee",
     company: "Natasha Ventures - Urdaneta",
     period: "December 2025 - July 2026",
     details: [

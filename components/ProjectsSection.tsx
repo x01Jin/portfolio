@@ -14,7 +14,7 @@ const ProjectsSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-4xl font-bold text-[#3e2723] mb-12 text-center"
         >
-          Projects & Portfolio
+          Projects
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
