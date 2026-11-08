@@ -22,7 +22,6 @@ const repos = await response.json();
 const owned = repos.filter((repo) => !repo.fork);
 
 const payload = {
-  generatedAt: new Date().toISOString(),
   totalStars: owned.reduce((sum, repo) => sum + repo.stargazers_count, 0),
   repos: Object.fromEntries(
     owned.map((repo) => [repo.name, repo.stargazers_count])
