@@ -1,5 +1,5 @@
 import React from "react";
-import Section from "./Section";
+import Section, { revealDelay } from "./Section";
 import { PROJECTS, SOCIAL_LINKS } from "../constants";
 import { ArrowUpRightIcon, StarIcon } from "./Icons";
 
@@ -12,7 +12,7 @@ const LANGUAGE_COLORS: Record<string, string> = {
 const ProjectsSection: React.FC = () => {
   return (
     <Section id="work">
-      <div>
+      <div data-reveal>
         <p className="eyebrow">01 / Selected work</p>
         <h2 className="mt-3 text-[clamp(2rem,4vw,2.9rem)] text-ink">Projects</h2>
       </div>
@@ -21,6 +21,8 @@ const ProjectsSection: React.FC = () => {
         {PROJECTS.map((project, index) => (
           <article
             key={project.repo}
+            data-reveal="pop"
+            style={revealDelay(80 + index * 70)}
             className="plate plate-lift flex flex-col p-6"
           >
             <div className="flex items-start justify-between gap-4">
@@ -95,7 +97,7 @@ const ProjectsSection: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-8 flex justify-end">
+      <div data-reveal style={revealDelay(520)} className="mt-8 flex justify-end">
         <a
           href={`${SOCIAL_LINKS.github}?tab=repositories`}
           target="_blank"

@@ -1,11 +1,11 @@
 import React from "react";
-import Section from "./Section";
+import Section, { revealDelay } from "./Section";
 import { ACHIEVEMENTS, EXPERIENCE } from "../constants";
 
 const ExperienceSection: React.FC = () => {
   return (
     <Section id="experience">
-      <div>
+      <div data-reveal>
         <p className="eyebrow">02 / Track record</p>
         <h2 className="mt-3 text-[clamp(2rem,4vw,2.9rem)] text-ink">
           Experience
@@ -13,8 +13,13 @@ const ExperienceSection: React.FC = () => {
       </div>
 
       <ol className="mt-10 space-y-10 border-l-2 border-ink/20">
-        {EXPERIENCE.map((item) => (
-          <li key={`${item.company}-${item.period}`} className="node relative pl-7 md:pl-9">
+        {EXPERIENCE.map((item, index) => (
+          <li
+            key={`${item.company}-${item.period}`}
+            data-reveal
+            style={revealDelay(80 + index * 70)}
+            className="node relative pl-7 md:pl-9"
+          >
             <div className="md:grid md:grid-cols-[1fr_auto] md:items-start md:gap-8">
               <div>
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -65,7 +70,7 @@ const ExperienceSection: React.FC = () => {
         ))}
       </ol>
 
-      <div className="mt-14">
+      <div data-reveal style={revealDelay(360)} className="mt-14">
         <p className="eyebrow">Education &amp; honors</p>
         <div className="mt-4 grid gap-x-10 gap-y-4 sm:grid-cols-2">
           {ACHIEVEMENTS.map((item) => (

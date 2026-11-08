@@ -17,7 +17,7 @@ const LINKS = [
 const ContactSection: React.FC = () => {
   return (
     <Section id="contact">
-      <div className="plate tape p-7 md:p-10">
+      <div data-reveal="pop" className="plate tape p-7 md:p-10">
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <p className="eyebrow">04 / Contact</p>

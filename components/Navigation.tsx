@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SOCIAL_LINKS } from "../constants";
 import { CloseIcon, GitHubIcon, MenuIcon } from "./Icons";
 
@@ -12,6 +12,7 @@ const LINKS = [
 const Navigation: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const sections = LINKS.map((link) =>
@@ -28,6 +29,10 @@ const Navigation: React.FC = () => {
         return rect.top <= marker && rect.bottom > marker;
       });
       setActive(current?.id ?? "");
+
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      headerRef.current?.style.setProperty("--progress", progress.toFixed(4));
     };
 
     const schedule = () => {
@@ -54,7 +59,10 @@ const Navigation: React.FC = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/90 backdrop-blur-sm">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 border-b-2 border-ink bg-paper"
+    >
       <nav
         aria-label="Sections"
         className="shell flex h-16 items-center justify-between gap-4"
@@ -78,19 +86,13 @@ const Navigation: React.FC = () => {
               key={link.id}
               href={`#${link.id}`}
               aria-current={active === link.id ? "location" : undefined}
-              className={`relative px-3 py-2 font-display text-lg uppercase tracking-[0.12em] transition-colors ${
+              className={`nav-link px-3 py-2 font-display text-lg uppercase tracking-[0.12em] transition-colors ${
                 active === link.id
                   ? "text-ink"
                   : "text-ink-soft hover:text-ink"
               }`}
             >
               {link.label}
-              {active === link.id && (
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-3 bottom-0.5 h-0.5 bg-ink"
-                />
-              )}
             </a>
           ))}
         </div>
@@ -124,8 +126,9 @@ const Navigation: React.FC = () => {
 
       <div
         id="mobile-menu"
-        hidden={!open}
-        className="border-t-2 border-ink bg-paper-2 md:hidden"
+        data-open={open}
+        aria-hidden={!open}
+        className="menu-panel md:hidden"
       >
         <div className="shell flex flex-col py-2">
           {LINKS.map((link) => (
@@ -140,6 +143,8 @@ const Navigation: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <div className="nav-progress" aria-hidden="true" />
     </header>
   );
 };
