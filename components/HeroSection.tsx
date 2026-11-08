@@ -12,9 +12,9 @@ const HeroSection: React.FC = () => {
     <section
       id="home"
       ref={ref}
-      className="flex scroll-mt-24 flex-col justify-center lg:min-h-[calc(100vh-4rem)]"
+      className="scroll-mt-24 pt-10 pb-6 md:pt-16 md:pb-10"
     >
-      <div className="shell grid gap-12 pt-12 pb-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16 lg:pt-20 lg:pb-12">
+      <div className="shell grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-16">
         <div
           data-reveal
           className={inView ? "revealed" : undefined}

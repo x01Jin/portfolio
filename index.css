@@ -88,13 +88,13 @@
   }
 
   .section {
-    scroll-margin-top: 5.5rem;
-    padding-block: 4.5rem;
+    scroll-margin-top: 5rem;
+    padding-block: 3rem;
   }
 
   @media (min-width: 768px) {
     .section {
-      padding-block: 6.5rem;
+      padding-block: 4rem;
     }
   }
 
