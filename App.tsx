@@ -26,8 +26,8 @@ function App() {
 
       <main id="content">
         <HeroSection />
-        <ProjectsSection />
         <ExperienceSection />
+        <ProjectsSection />
         <SkillsSection />
         <ContactSection />
       </main>

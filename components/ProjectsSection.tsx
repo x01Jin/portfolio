@@ -18,10 +18,12 @@ const ProjectsSection: React.FC = () => {
   }));
 
   return (
-    <Section id="work">
+    <Section id="projects">
       <div data-reveal>
-        <p className="eyebrow">01 / Selected work</p>
-        <h2 className="mt-3 text-[clamp(2rem,4vw,2.9rem)] text-ink">Projects</h2>
+        <p className="eyebrow">02 / Personal projects</p>
+        <h2 className="mt-3 text-[clamp(2rem,4vw,2.9rem)] text-ink">
+          Pinned projects
+        </h2>
       </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">

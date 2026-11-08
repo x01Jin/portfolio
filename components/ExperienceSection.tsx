@@ -6,7 +6,7 @@ const ExperienceSection: React.FC = () => {
   return (
     <Section id="experience">
       <div data-reveal>
-        <p className="eyebrow">02 / Track record</p>
+        <p className="eyebrow">01 / Track record</p>
         <h2 className="mt-3 text-[clamp(2rem,4vw,2.9rem)] text-ink">
           Experience
         </h2>

@@ -3,8 +3,8 @@ import { SOCIAL_LINKS } from "../constants";
 import { CloseIcon, GitHubIcon, MenuIcon } from "./Icons";
 
 const LINKS = [
-  { label: "Work", id: "work" },
   { label: "Experience", id: "experience" },
+  { label: "Personal projects", id: "projects" },
   { label: "Skills", id: "skills" },
   { label: "Contact", id: "contact" },
 ];

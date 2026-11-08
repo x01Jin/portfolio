@@ -40,7 +40,7 @@ const HeroSection: React.FC = () => {
             className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
           >
             <a
-              href="#work"
+              href="#projects"
               className="btn btn-primary justify-center sm:justify-start"
             >
               View projects
