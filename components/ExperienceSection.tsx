@@ -1,119 +1,90 @@
 import React from "react";
-import { motion } from "framer-motion";
-import CardboardBox from "./CardboardBox";
-import ScrollSection from "./ScrollSection";
-import { EXPERIENCE, ACHIEVEMENTS, SEMINARS } from "../constants";
+import Section from "./Section";
+import { ACHIEVEMENTS, EXPERIENCE } from "../constants";
 
 const ExperienceSection: React.FC = () => {
   return (
-    <ScrollSection id="experience">
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-[#3e2723] mb-12 text-center"
-        >
-          Experience & Achievements
-        </motion.h2>
+    <Section id="experience">
+      <div>
+        <p className="eyebrow">02 / Track record</p>
+        <h2 className="mt-3 text-[clamp(2rem,4vw,2.9rem)] text-ink">
+          Experience
+        </h2>
+      </div>
 
-        {/* Experience Timeline */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-[#5d4037] mb-8 flex items-center gap-3">
-            <span className="w-4 h-4 bg-[#3e2723]" />
-            Professional Experience
-          </h3>
-
-          <div className="space-y-6">
-            {EXPERIENCE.map((exp, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1, duration: 0.6 }}
-              >
-                <CardboardBox className="border-l-4 border-[#8b5a2b]">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-3">
-                    <div>
-                      <h4 className="text-xl font-bold text-[#3e2723]">
-                        {exp.title}
-                      </h4>
-                      <p className="text-[#8b5a2b] font-semibold">
-                        {exp.company}
-                      </p>
-                    </div>
-                    <span className="text-sm bg-[#e6ccb2] px-3 py-1 border border-[#3e2723] text-[#3e2723] font-semibold whitespace-nowrap">
-                      {exp.period}
+      <ol className="mt-10 space-y-10 border-l-2 border-ink/20">
+        {EXPERIENCE.map((item) => (
+          <li key={`${item.company}-${item.period}`} className="node relative pl-7 md:pl-9">
+            <div className="md:grid md:grid-cols-[1fr_auto] md:items-start md:gap-8">
+              <div>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <h3 className="text-2xl text-ink">{item.title}</h3>
+                  {item.current && (
+                    <span className="border border-ink bg-sage px-2 py-0.5 text-[0.7rem] font-semibold tracking-[0.12em] text-ink uppercase">
+                      Current
                     </span>
-                  </div>
-                  <ul className="list-disc list-inside space-y-2 text-[#3e2723]">
-                    {exp.details.map((detail, dIdx) => (
-                      <li key={dIdx}>{detail}</li>
-                    ))}
-                  </ul>
-                </CardboardBox>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+                  )}
+                </div>
 
-        {/* Achievements & Seminars Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <CardboardBox title="Achievements" variant="primary">
-              <div className="space-y-6">
-                {ACHIEVEMENTS.map((ach, idx) => (
-                  <div key={idx} className="border-l-4 border-[#8b5a2b] pl-4">
-                    <h4 className="text-lg font-bold text-[#5d4037]">
-                      {ach.title}
-                    </h4>
-                    <p className="text-[#8b5a2b] font-semibold text-sm">
-                      {ach.issuer}
-                    </p>
-                    {ach.details && (
-                      <ul className="list-disc list-inside mt-2 text-[#3e2723] text-sm">
-                        {ach.details.map((detail, dIdx) => (
-                          <li key={dIdx}>{detail}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ))}
+                <p className="mt-1 text-[0.95rem] text-ink-soft">
+                  {item.companyUrl ? (
+                    <a
+                      href={item.companyUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="link"
+                    >
+                      {item.company}
+                    </a>
+                  ) : (
+                    item.company
+                  )}
+                </p>
               </div>
-            </CardboardBox>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            viewport={{ amount: 0.25 }}
-          >
-            <CardboardBox title="Seminars" variant="secondary">
-              <div className="space-y-4">
-                {SEMINARS.map((seminar, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -15 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3"
-                  >
-                    <span className="mt-1 text-[#3e2723] font-bold">•</span>
-                    <span className="text-[#3e2723]">{seminar}</span>
-                  </motion.div>
-                ))}
+              <span className="mt-1 block text-sm text-ink-faint md:mt-2 md:text-right">
+                {item.period}
+              </span>
+            </div>
+
+            <ul className="mt-3 space-y-1.5">
+              {item.details.map((detail) => (
+                <li
+                  key={detail}
+                  className="flex gap-2.5 text-[0.95rem] leading-relaxed text-ink-soft"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 bg-ink/45"
+                  />
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+
+      <div className="mt-14">
+        <p className="eyebrow">Education &amp; honors</p>
+        <div className="mt-4 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+          {ACHIEVEMENTS.map((item) => (
+            <div
+              key={item.title}
+              className="flex items-baseline justify-between gap-4 border-t-2 border-ink/20 pt-4"
+            >
+              <div>
+                <p className="font-display text-xl text-ink">{item.title}</p>
+                <p className="text-sm text-ink-faint">{item.issuer}</p>
               </div>
-            </CardboardBox>
-          </motion.div>
+              <span className="shrink-0 text-sm text-ink-faint">
+                {item.year}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-    </ScrollSection>
+    </Section>
   );
 };
 

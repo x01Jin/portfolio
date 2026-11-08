@@ -1,71 +1,112 @@
 import React from "react";
-import { motion } from "framer-motion";
-import CardboardBox from "./CardboardBox";
-import ScrollSection from "./ScrollSection";
-import { PROJECTS } from "../constants";
+import Section from "./Section";
+import { PROJECTS, SOCIAL_LINKS } from "../constants";
+import { ArrowUpRightIcon, StarIcon } from "./Icons";
+
+const LANGUAGE_COLORS: Record<string, string> = {
+  TypeScript: "#3178c6",
+  Python: "#3572a5",
+  Rust: "#dea584",
+};
 
 const ProjectsSection: React.FC = () => {
   return (
-    <ScrollSection id="projects">
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-[#3e2723] mb-12 text-center"
-        >
-          Projects
-        </motion.h2>
+    <Section id="work">
+      <div>
+        <p className="eyebrow">01 / Selected work</p>
+        <h2 className="mt-3 text-[clamp(2rem,4vw,2.9rem)] text-ink">Projects</h2>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PROJECTS.map((project, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              whileHover={{ y: -5 }}
-            >
-              <CardboardBox
-                title={project.name}
-                className="flex flex-col h-full hover:shadow-[12px_12px_0px_0px_#3e2723] transition-shadow"
-              >
-                <p className="flex-grow mb-4 text-[#4e342e] leading-relaxed">
-                  {project.description}
-                </p>
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
+        {PROJECTS.map((project, index) => (
+          <article
+            key={project.repo}
+            className="plate plate-lift flex flex-col p-6"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <span className="font-display text-base tracking-[0.2em] text-ink-faint">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-1 break-words text-2xl text-ink">
+                  {project.name}
+                </h3>
+              </div>
+              {project.stars > 0 && (
+                <span
+                  className="flex shrink-0 items-center gap-1.5 border border-ink/25 bg-paper px-2 py-1 text-xs font-medium text-ink-soft"
+                  aria-label={`${project.stars} stars`}
+                >
+                  <StarIcon className="h-3.5 w-3.5" />
+                  {project.stars}
+                </span>
+              )}
+            </div>
 
-                <div className="mt-auto">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <motion.span
-                        key={tech}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.05 }}
-                        className="text-sm bg-[#fff8dc] px-2 py-1 border border-[#3e2723] text-[#3e2723] font-semibold"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
+            <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-soft">
+              {project.description}
+            </p>
 
-                  <motion.a
-                    href={project.link}
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span key={tag} className="tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
+              <span className="flex items-center gap-2 text-sm text-ink-soft">
+                <span
+                  aria-hidden="true"
+                  className="h-2.5 w-2.5 rounded-full"
+                  style={{
+                    backgroundColor:
+                      LANGUAGE_COLORS[project.language] ?? "#8a8a8a",
+                  }}
+                />
+                {project.language}
+              </span>
+
+              <span className="flex items-center gap-4 text-sm font-medium">
+                {project.demo && (
+                  <a
+                    href={project.demo}
                     target="_blank"
                     rel="noreferrer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="block text-center w-full bg-[#6d597a] text-white py-2 border-2 border-[#3e2723] shadow-[4px_4px_0_0_#3e2723] hover:bg-[#584665] hover:shadow-[2px_2px_0_0_#3e2723] hover:translate-y-[2px] transition-all font-bold"
+                    className="link inline-flex items-center gap-1"
                   >
-                    View Repository →
-                  </motion.a>
-                </div>
-              </CardboardBox>
-            </motion.div>
-          ))}
-        </div>
+                    Play
+                    <ArrowUpRightIcon className="h-3.5 w-3.5" />
+                  </a>
+                )}
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link inline-flex items-center gap-1"
+                >
+                  Repository
+                  <ArrowUpRightIcon className="h-3.5 w-3.5" />
+                </a>
+              </span>
+            </div>
+          </article>
+        ))}
       </div>
-    </ScrollSection>
+
+      <div className="mt-8 flex justify-end">
+        <a
+          href={`${SOCIAL_LINKS.github}?tab=repositories`}
+          target="_blank"
+          rel="noreferrer"
+          className="btn btn-ghost text-base"
+        >
+          All repositories
+          <ArrowUpRightIcon className="h-4 w-4" />
+        </a>
+      </div>
+    </Section>
   );
 };
 

@@ -1,79 +1,139 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { PROFILE, SOCIAL_LINKS } from "../constants";
+import { useInView } from "react-intersection-observer";
+import { PROFILE, PROJECTS, SOCIAL_LINKS } from "../constants";
+import { ArrowDownIcon, ArrowUpRightIcon, GitHubIcon } from "./Icons";
+
+const totalStars = PROJECTS.reduce((sum, project) => sum + project.stars, 0);
 
 const HeroSection: React.FC = () => {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center py-12 px-4"
+      ref={ref}
+      className="flex scroll-mt-24 flex-col justify-center lg:min-h-[calc(100vh-4rem)]"
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
-        className="text-center max-w-4xl"
-      >
-        {/* Main Title Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="inline-block p-6 md:p-8 border-4 border-[#3e2723] bg-[#e6ccb2] shadow-[8px_8px_0px_0px_#3e2723] mb-8"
+      <div className="shell grid gap-12 pt-12 pb-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16 lg:pt-20 lg:pb-12">
+        <div
+          data-reveal
+          className={inView ? "revealed" : undefined}
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-[#3e2723] mb-2">
-            {PROFILE.name}
-          </h1>
-          <h2 className="text-2xl md:text-3xl text-[#5d4037]">
+          <p className="eyebrow">
+            <span
+              aria-hidden="true"
+              className="mr-3 inline-block h-2 w-2 -translate-y-0.5 bg-ink"
+            />
             {PROFILE.role}
-          </h2>
-        </motion.div>
+          </p>
 
-        {/* Summary */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-[#3e2723] mb-8 max-w-2xl mx-auto leading-relaxed"
-        >
-          {PROFILE.summary}
-        </motion.p>
+          <h1 className="mt-7 text-[clamp(2.9rem,7.5vw,5.25rem)] leading-[0.92] text-ink">
+            Alexander James{" "}
+            <br />
+            Soriano
+          </h1>
 
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <a
-            href="#about"
-            className="inline-block bg-[#3e2723] text-[#e6ccb2] px-8 py-3 border-2 border-[#3e2723] shadow-[4px_4px_0_0_#3e2723] hover:translate-y-1 hover:shadow-none transition-all font-bold text-lg"
-          >
-            Explore My Work ↓
-          </a>
-        </motion.div>
-      </motion.div>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <a
+              href="#work"
+              className="btn btn-primary justify-center sm:justify-start"
+            >
+              View projects
+              <ArrowDownIcon className="h-5 w-5" />
+            </a>
+            <a
+              href={SOCIAL_LINKS.github}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-ghost justify-center sm:justify-start"
+            >
+              GitHub
+              <ArrowUpRightIcon className="h-5 w-5" />
+            </a>
+          </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="mt-14 flex h-6 w-6 items-center justify-center md:mt-20"
-      >
-        <svg
-          className="w-6 h-6 text-[#5d4037]"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+          <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t-2 border-ink/15 pt-6">
+            <div>
+              <dt className="eyebrow text-[0.95rem] tracking-[0.12em]">
+                Projects
+              </dt>
+              <dd className="mt-1 font-display text-3xl leading-none text-ink">
+                06
+              </dd>
+            </div>
+            <div>
+              <dt className="eyebrow text-[0.95rem] tracking-[0.12em]">
+                Stars
+              </dt>
+              <dd className="mt-1 font-display text-3xl leading-none text-ink">
+                {totalStars}
+              </dd>
+            </div>
+            <div>
+              <dt className="eyebrow text-[0.95rem] tracking-[0.12em]">
+                Graduated
+              </dt>
+              <dd className="mt-1 font-display text-3xl leading-none text-ink">
+                2025
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <aside
+          data-reveal
+          className={`plate tape self-start lg:self-center ${inView ? "revealed" : ""}`}
+          style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
-      </motion.div>
+          <div className="flex items-center justify-between border-b-2 border-ink/15 px-6 py-4">
+            <span className="font-display text-xl uppercase tracking-[0.18em] text-ink-soft">
+              Profile
+            </span>
+            <span
+              aria-hidden="true"
+              className="h-2.5 w-2.5 border border-ink bg-sage"
+            />
+          </div>
+
+          <dl className="divide-y-2 divide-ink/10">
+            <div className="px-6 py-4">
+              <dt className="eyebrow text-[0.9rem] tracking-[0.14em]">Now</dt>
+              <dd className="mt-1.5 text-[0.95rem] leading-relaxed text-ink">
+                <a
+                  href={PROFILE.companyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  {PROFILE.company}
+                </a>
+                , since {PROFILE.startedAt}.
+              </dd>
+            </div>
+
+            <div className="px-6 py-4">
+              <dt className="eyebrow text-[0.9rem] tracking-[0.14em]">
+                Education
+              </dt>
+              <dd className="mt-1.5 text-[0.95rem] leading-relaxed text-ink">
+                {PROFILE.education}, {PROFILE.school}.
+              </dd>
+            </div>
+          </dl>
+
+          <div className="border-t-2 border-ink/15 px-6 py-3">
+            <a
+              href={SOCIAL_LINKS.github}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 font-display text-lg uppercase tracking-[0.14em] text-ink-soft transition-colors hover:text-ink"
+            >
+              <GitHubIcon className="h-4 w-4" />
+              /x01Jin
+            </a>
+          </div>
+        </aside>
+      </div>
     </section>
   );
 };

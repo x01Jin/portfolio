@@ -1,4 +1,4 @@
-import { Project, Achievement } from "./types";
+import { Project, Achievement, Experience, SkillGroup } from "./types";
 
 export const SOCIAL_LINKS = {
   github: "https://github.com/x01Jin",
@@ -7,152 +7,145 @@ export const SOCIAL_LINKS = {
   discord: "https://discord.com/users/489127925116043265",
 };
 
+export const PROFILE = {
+  role: "Web Developer",
+  company: "Vertex Technologies Corporation",
+  companyUrl: "https://www.vertextechcorp.com/",
+  startedAt: "Nov 2026",
+  education: "BS Computer Science, 2025",
+  school: "Universidad de Dagupan",
+};
+
 export const PROJECTS: Project[] = [
   {
-    name: "Youtube to music Converter (YTMC)",
+    name: "warper",
+    repo: "warper",
     description:
-      "A Windows desktop app to convert YouTube videos to music files with other tools like trimming autotagging the music's metadata, changing extension, and advance enhancements.",
-    tech: ["React", "Typescript", "Electron"],
+      "GUI tool for managing Cloudflare WARP connections and cycling exit IPs on Windows.",
+    language: "Rust",
+    tags: ["Cloudflare WARP", "warp-cli", "Windows"],
+    stars: 0,
+    link: "https://github.com/x01Jin/warper",
+  },
+  {
+    name: "ytmc",
+    repo: "ytmc",
+    description:
+      "Desktop app that converts YouTube videos to music files, with trimming, metadata tagging, and format conversion.",
+    language: "TypeScript",
+    tags: ["yt-dlp", "youtube", "music"],
+    stars: 2,
     link: "https://github.com/x01Jin/ytmc",
   },
   {
-    name: "Discord Games Launcher",
+    name: "discord-games-launcher",
+    repo: "discord-games-launcher",
     description:
-      "A Windows application that creates dummy executables with GUI windows to trigger Discord's game detection. Browse Discord's supported games database, add them to your library, and launch dummy processes, making Discord show your Playing status.",
-    tech: ["Python", "React", "Typescript"],
+      "Makes Discord show a game as playing without owning it, and finishes quests from the client you already have open.",
+    language: "Python",
+    tags: ["Discord API", "quests", "Windows"],
+    stars: 5,
     link: "https://github.com/x01Jin/discord-games-launcher",
   },
   {
-    name: "dndroll Discord Bot",
-    description:
-      "A Discord bot providing dice rolls and D&D utilities for tabletop gaming communities.",
-    tech: ["Python", "Discord.py"],
+    name: "datamine-game",
+    repo: "datamine-game",
+    description: "Automation game about mining data, built for the browser.",
+    language: "TypeScript",
+    tags: ["game", "automation"],
+    stars: 0,
+    link: "https://github.com/x01Jin/datamine-game",
+    demo: "https://x01jin.github.io/datamine-game/",
+  },
+  {
+    name: "dndroll-discord-bot",
+    repo: "dndroll-discord-bot",
+    description: "A joke D&D dice bot for Discord.",
+    language: "Python",
+    tags: ["discord.py"],
+    stars: 4,
     link: "https://github.com/x01Jin/dndroll-discord-bot",
   },
   {
-    name: "Experimental Test Site",
+    name: "openchoreographer",
+    repo: "openchoreographer",
     description:
-      "A personal website showcasing bizzare effects and utilizing public domain materials, this is where i test multiple kinds of effects and animations for my personal projects and experiments.",
-    tech: ["TypeScript", "React", "Tailwind CSS"],
-    link: "https://github.com/x01Jin/experimental-test-site",
-  },
-  {
-    name: "Ascend OS",
-    description:
-      "An experimental incremental exploration game with procedurally generated file explorer. Mine data, trace signals, and uncover the path to ascension.",
-    tech: ["TypeScript", "React", "Tailwind CSS"],
-    link: "https://github.com/x01Jin/ascend-os",
-  },
-  {
-    name: "MaiMaiMai",
-    description:
-      "A Peer-to-Peer (P2P) queue management tool designed for arcade sessions and general queueing using CRDT-based P2P technology.",
-    tech: ["TypeScript", "React", "Yjs", "WebRTC"],
-    link: "https://github.com/x01Jin/maimaimai",
+      "OpenCode V2 orchestration plugin with worker and reviewer subagents that adapt to the tools you already have installed.",
+    language: "TypeScript",
+    tags: ["AI agents", "OpenCode", "TUI"],
+    stars: 1,
+    link: "https://github.com/x01Jin/openchoreographer",
   },
 ];
-
-export const PROFILE = {
-  name: "Alexander James Soriano",
-  role: "Junior Developer & CS Graduate",
-  objective:
-    "Junior Developer with hands-on experience in software development and a strong background in PC troubleshooting and maintenance. Looking to contribute by building efficient projects and ensuring smooth IT operations for the company.",
-  summary:
-    "Proficient in Python, JavaScript/TypeScript, Node.js, and React for building efficient and user-friendly applications. Experienced with Git for version control, collaboration, and project management. Knowledgeable in AI, machine learning, and LLMs/local LLMs with practical development experience. Strong problem-solving skills and adaptable in both software development and technical tasks.",
-  education: "BSCS, Computer Science (2025) - Universidad de Dagupan",
-};
-
-export const ACHIEVEMENTS: Achievement[] = [
-  {
-    title: "CERTIFICATE OF EXCELLENCE (DEAN'S LISTER)",
-    issuer: "Universidad de Dagupan",
-    details: ["Academic Year 2022-2023"],
-  },
-  {
-    title: "CERTIFICATE OF PARTICIPATION",
-    issuer: "Universidad de Dagupan - SITE Knowledge Festival",
-    details: [
-      "2024: The future InSITE: AI Transforming Vision and Education",
-      "2025: Emerging Technologies: Shaping the Future of Digital Innovation",
-    ],
-  },
-];
-
-export const SEMINARS: string[] = [
-  "Synergizing IoT and Robotics: Unleashing the Power of Intelligence (2023)",
-  "Seminar on Quality, Productivity, & Employability (2025)",
-];
-
-export interface Experience {
-  title: string;
-  company: string;
-  period: string;
-  details: string[];
-}
 
 export const EXPERIENCE: Experience[] = [
   {
-    title: "IT Employee",
-    company: "Natasha Ventures - Urdaneta",
-    period: "December 2025 - July 2026",
+    title: "Web Developer",
+    company: "Vertex Technologies Corporation",
+    companyUrl: "https://www.vertextechcorp.com/",
+    period: "Nov 2026 – Present",
+    current: true,
     details: [
-      "Developing Various Software Solutions for improving workflow operations",
-      "Investigating and Troubleshooting Tech related problems via a Ticketing system",
+      "Front-end development on Vertex's SaaS platforms for LGUs and enterprises.",
+    ],
+  },
+  {
+    title: "IT Employee",
+    company: "Natasha Ventures, Urdaneta",
+    period: "Dec 2025 – Jul 2026",
+    details: [
+      "Built internal software to improve workflow operations.",
+      "Resolved technical issues through a ticketing system.",
     ],
   },
   {
     title: "Computer Technician",
     company: "RRV Atomy Visionaries",
-    period: "September 8 - November 18, 2025",
+    period: "Sep 2025 – Nov 2025",
     details: [
-      "Building, setting up, and fixing computer hardware and software",
-      "Provided technical support and maintenance",
+      "Built, set up, and repaired computer hardware and software.",
+      "Provided technical support and maintenance.",
     ],
   },
   {
     title: "IT Internship",
     company: "Universidad de Dagupan",
-    period: "July 10 - August 17, 2024",
+    period: "Jul 2024 – Aug 2024",
     details: [
-      "Fixed common technical issues (Internet, Computer hardware and software)",
-      "Wrote scripts for workflow automation",
+      "Fixed common issues with networks, hardware, and software.",
+      "Wrote scripts for workflow automation.",
     ],
   },
 ];
 
-export interface Skill {
-  category: string;
-  items: string[];
-}
+export const ACHIEVEMENTS: Achievement[] = [
+  {
+    title: "BS Computer Science",
+    issuer: "Universidad de Dagupan",
+    year: "2025",
+  },
+  {
+    title: "Dean's Lister",
+    issuer: "Universidad de Dagupan",
+    year: "AY 2022–2023",
+  },
+];
 
-export const SKILLS: Skill[] = [
+export const SKILLS: SkillGroup[] = [
   {
     category: "Languages",
-    items: ["Python", "JavaScript", "TypeScript", "SQL"],
+    items: ["TypeScript", "JavaScript", "Python", "Rust", "SQL"],
   },
   {
-    category: "Frameworks & Tools",
-    items: [
-      "React",
-      "Node.js",
-      "PyQt6",
-      "Git/GitHub",
-      "Tailwind CSS",
-      "Bootstrap",
-    ],
+    category: "Frameworks & tools",
+    items: ["React", "Node.js", "Tailwind CSS", "PyQt6", "Git"],
   },
   {
-    category: "AI & Data",
-    items: ["OpenCV", "LLMs (Local)", "Machine Learning", "Computer Vision"],
+    category: "AI & data",
+    items: ["Local LLMs", "OpenCV", "Machine learning", "Computer vision"],
   },
   {
-    category: "Hardware",
-    items: ["PC Troubleshooting", "PC Maintenance", "IoT", "Network Setup"],
+    category: "Systems",
+    items: ["PC troubleshooting", "Networking", "IoT", "Hardware repair"],
   },
-];
-
-export const CORE_SKILLS = [
-  "Programming",
-  "Agentic Workflows",
-  "Project Management",
 ];

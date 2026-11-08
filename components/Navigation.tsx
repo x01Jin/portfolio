@@ -1,126 +1,146 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { SOCIAL_LINKS } from "../constants";
+import { CloseIcon, GitHubIcon, MenuIcon } from "./Icons";
 
-interface NavLink {
-  name: string;
-  id: string;
-}
+const LINKS = [
+  { label: "Work", id: "work" },
+  { label: "Experience", id: "experience" },
+  { label: "Skills", id: "skills" },
+  { label: "Contact", id: "contact" },
+];
 
 const Navigation: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-
-  const links: NavLink[] = [
-    { name: "Home", id: "home" },
-    { name: "Experience", id: "experience" },
-    { name: "Projects", id: "projects" },
-    { name: "Contact", id: "skills-contact" },
-  ];
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = links.map((link) => {
-        const element = document.getElementById(link.id);
-        if (!element) return null;
+    const sections = LINKS.map((link) =>
+      document.getElementById(link.id)
+    ).filter((el): el is HTMLElement => el !== null);
 
-        const rect = element.getBoundingClientRect();
-        return {
-          id: link.id,
-          offset: rect.top,
-        };
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const marker = window.innerHeight * 0.4;
+      const current = sections.find((section) => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= marker && rect.bottom > marker;
       });
-
-      // Find the section closest to the top of the viewport
-      const closestSection = sections
-        .filter((s) => s !== null)
-        .reduce((closest, current) => {
-          if (!closest) return current;
-          return Math.abs(current!.offset) < Math.abs(closest.offset)
-            ? current
-            : closest;
-        });
-
-      if (closestSection) {
-        setActiveSection(closestSection.id);
-      }
+      setActive(current?.id ?? "");
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [links]);
+    const schedule = () => {
+      if (frame === 0) frame = window.requestAnimationFrame(update);
+    };
 
-  const smoothScroll = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
 
-  const activeStyle = "bg-[#5d4037] text-[#e6ccb2] translate-y-1 shadow-none";
-  const inactiveStyle =
-    "bg-[#ddb892] text-[#3e2723] hover:bg-[#b08968] shadow-[4px_4px_0px_0px_#3e2723]";
-  const baseBtn =
-    "block w-full md:w-auto text-center px-6 py-2 text-lg font-bold border-2 border-[#3e2723] transition-all duration-150 uppercase tracking-wider mb-2 md:mb-0";
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
-    <nav className="sticky top-0 z-50 p-4 bg-[#dcb386]/95 backdrop-blur-sm border-b-4 border-[#5d4037]">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="flex justify-between w-full md:w-auto items-center"
+    <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/90 backdrop-blur-sm">
+      <nav
+        aria-label="Sections"
+        className="shell flex h-16 items-center justify-between gap-4"
+      >
+        <a
+          href="#home"
+          className="flex items-center gap-3"
+          aria-label="Alexander James Soriano, back to top"
         >
+          <span className="grid h-9 w-9 place-items-center border-2 border-ink bg-ink font-display text-lg leading-none text-paper">
+            x0
+          </span>
+          <span className="font-display text-xl tracking-wide text-ink">
+            x01Jin
+          </span>
+        </a>
+
+        <div className="hidden items-center gap-1 md:flex">
+          {LINKS.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              aria-current={active === link.id ? "location" : undefined}
+              className={`relative px-3 py-2 font-display text-lg uppercase tracking-[0.12em] transition-colors ${
+                active === link.id
+                  ? "text-ink"
+                  : "text-ink-soft hover:text-ink"
+              }`}
+            >
+              {link.label}
+              {active === link.id && (
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-3 bottom-0.5 h-0.5 bg-ink"
+                />
+              )}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-2">
           <a
             href={SOCIAL_LINKS.github}
             target="_blank"
             rel="noreferrer"
-            aria-label="Visit GitHub profile"
-            className="flex items-center gap-2 text-2xl font-bold text-[#3e2723] border-2 border-[#3e2723] p-1 px-3 bg-[#e6ccb2] shadow-[4px_4px_0px_0px_#3e2723] hover:shadow-none transition-all"
+            aria-label="GitHub profile"
+            className="hidden h-10 w-10 place-items-center border-2 border-ink bg-paper-2 text-ink transition-transform hover:-translate-y-0.5 md:grid"
           >
-            <svg
-              className="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17a4.65 4.65 0 0 1 1.23 3.22c0 4.6-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z" />
-            </svg>
-            x01Jin
+            <GitHubIcon className="h-5 w-5" />
           </a>
           <button
-            className="md:hidden p-2 text-[#3e2723] border-2 border-[#3e2723] bg-[#ddb892] font-bold"
-            onClick={() => setIsOpen(!isOpen)}
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="grid h-10 w-10 place-items-center border-2 border-ink bg-paper-2 text-ink md:hidden"
           >
-            {isOpen ? "✕" : "☰"}
+            {open ? (
+              <CloseIcon className="h-5 w-5" />
+            ) : (
+              <MenuIcon className="h-5 w-5" />
+            )}
           </button>
-        </motion.div>
+        </div>
+      </nav>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className={`${
-            isOpen ? "flex" : "hidden"
-          } md:flex flex-col md:flex-row gap-4 mt-4 md:mt-0 w-full md:w-auto`}
-        >
-          {links.map((link, idx) => (
-            <motion.button
+      <div
+        id="mobile-menu"
+        hidden={!open}
+        className="border-t-2 border-ink bg-paper-2 md:hidden"
+      >
+        <div className="shell flex flex-col py-2">
+          {LINKS.map((link) => (
+            <a
               key={link.id}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.05 }}
-              onClick={() => smoothScroll(link.id)}
-              className={`${baseBtn} ${
-                activeSection === link.id ? activeStyle : inactiveStyle
-              }`}
+              href={`#${link.id}`}
+              onClick={() => setOpen(false)}
+              className="border-b border-ink/15 py-3 font-display text-xl uppercase tracking-[0.12em] text-ink last:border-0"
             >
-              {link.name}
-            </motion.button>
+              {link.label}
+            </a>
           ))}
-        </motion.div>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 };
 
