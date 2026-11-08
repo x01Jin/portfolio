@@ -1,12 +1,12 @@
 import React from "react";
 import { PROFILE, PROJECTS, SOCIAL_LINKS } from "../constants";
+import { useStars } from "../useStars";
 import { revealDelay, useReveal } from "./Section";
 import { ArrowDownIcon, ArrowUpRightIcon, GitHubIcon } from "./Icons";
 
-const totalStars = PROJECTS.reduce((sum, project) => sum + project.stars, 0);
-
 const HeroSection: React.FC = () => {
   const { ref, revealed } = useReveal();
+  const { total } = useStars();
 
   return (
     <section
@@ -67,7 +67,7 @@ const HeroSection: React.FC = () => {
                 Projects
               </dt>
               <dd className="mt-1 font-display text-3xl leading-none text-ink">
-                06
+                {String(PROJECTS.length).padStart(2, "0")}
               </dd>
             </div>
             <div>
@@ -75,7 +75,7 @@ const HeroSection: React.FC = () => {
                 Stars
               </dt>
               <dd className="mt-1 font-display text-3xl leading-none text-ink">
-                {totalStars}
+                {total}
               </dd>
             </div>
             <div>

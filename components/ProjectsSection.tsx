@@ -1,6 +1,7 @@
 import React from "react";
 import Section, { revealDelay } from "./Section";
 import { PROJECTS, SOCIAL_LINKS } from "../constants";
+import { useStars } from "../useStars";
 import { ArrowUpRightIcon, StarIcon } from "./Icons";
 
 const LANGUAGE_COLORS: Record<string, string> = {
@@ -10,6 +11,12 @@ const LANGUAGE_COLORS: Record<string, string> = {
 };
 
 const ProjectsSection: React.FC = () => {
+  const { repos } = useStars();
+  const projects = PROJECTS.map((project) => ({
+    ...project,
+    stars: repos[project.repo] ?? project.stars,
+  }));
+
   return (
     <Section id="work">
       <div data-reveal>
@@ -18,7 +25,7 @@ const ProjectsSection: React.FC = () => {
       </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {PROJECTS.map((project, index) => (
+        {projects.map((project, index) => (
           <article
             key={project.repo}
             data-reveal="pop"

@@ -86,7 +86,7 @@ export const EXPERIENCE: Experience[] = [
     period: "Nov 2026 – Present",
     current: true,
     details: [
-      "Front-end development on Vertex's SaaS platforms for LGUs and enterprises.",
+      "Web development on Vertex's SaaS platforms for LGUs and enterprises.",
     ],
   },
   {
